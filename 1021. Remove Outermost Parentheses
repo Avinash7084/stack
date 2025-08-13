@@ -1,0 +1,23 @@
+#include <stack>
+#include <string>
+using namespace std;
+
+class Solution {
+public:
+    string removeOuterParentheses(string s) {
+        stack<char> st;
+        string result = "";
+
+        for (char c : s) {
+            if (c == '(') {
+                if (!st.empty()) result += c; // not outermost
+                st.push(c);
+            } 
+            else { // c == ')'
+                st.pop();
+                if (!st.empty()) result += c; // not outermost
+            }
+        }
+        return result;
+    }
+};

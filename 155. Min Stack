@@ -1,0 +1,30 @@
+class MinStack {
+public:
+    stack<int>orignal;
+    stack<int>copy;
+    MinStack() {
+        
+    }
+    
+    void push(int val) {
+        orignal.push(val);
+        if(copy.size() == 0 || val<copy.top()) copy.push(val);
+        else{
+            copy.push(copy.top());
+        }
+    }
+    
+    void pop() {
+        orignal.pop();
+        copy.pop();
+    }
+    
+    int top() {
+        return orignal.top();
+    }
+    
+    int getMin() {
+       return copy.top();
+    }
+};
+
